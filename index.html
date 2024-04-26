@@ -7,9 +7,10 @@
     <style>
         /* CSS styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f2f2f2;
         }
 
         header {
@@ -19,10 +20,16 @@
             padding: 10px 0;
         }
 
+        h1, h2 {
+            font-family: 'Roboto', sans-serif;
+        }
+
         section {
             padding: 20px;
             margin: 20px 0;
             border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         button {
@@ -31,6 +38,30 @@
             padding: 5px 10px;
             border: none;
             cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980B9;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -54,7 +85,8 @@
     <section id="cart">
         <h2>Cart</h2>
         <ul id="cart-items"></ul>
-        <p>Total: $<span id="total">0</span></p>
+        <button id="checkout-btn">Checkout</button>
+        <p class="cart-total">Total: $<span id="total">0</span></p>
     </section>
 
     <script>
@@ -74,11 +106,20 @@
             cartItems.innerHTML = '';
             cart.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = `${item.item} - $${item.price}`;
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `${item.item} - $${item.price}`;
+                li.appendChild(cartItem);
                 cartItems.appendChild(li);
             });
             totalElement.textContent = total;
         }
-    </script>
-</body>
-</html>
+
+        function checkout() {
+            alert(`Thank you for your order! Total: $${total}`);
+            cart = [];
+            total = 0;
+            updateCart();
+        }
+
+        const checkout
