@@ -69,8 +69,10 @@ li {
     <header>
         <h1>Welcome to our Italian Restaurant</h1>
     </header>
-
-    <section id="menu">
+      <section id="search">
+        <input type="text" id="search-input" placeholder="Search menu...">
+    </section>
+     <section id="menu">
         <h2>Our Menu</h2>
         <ul>
             <li>Pasta - $10</li>
@@ -98,6 +100,24 @@ function addToCart(item, price) {
     cart.push({ item, price });
     total += price;
     updateCart();
+}
+        #search {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    padding: 5px;
+    width: 200px;
+}
+        #search {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    padding: 5px;
+    width: 200px;
 }
 
 function updateCart() {
